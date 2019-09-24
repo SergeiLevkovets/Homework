@@ -6,14 +6,12 @@ let countHours;
 let lessonHours;
 let isCountLessons;
 
-
 document.getElementById('calc').onclick = function () {
     form = document.forms.my_form;
     costCourse = form.courseCost.value;
     countLessonsOrHours = form.lessonsCount.value;
     lessonHours = form.hoursInLesson.value;
     isCountLessons = form.elements.count;
-
 
     if (!calculate()) {
         return;
@@ -23,8 +21,8 @@ document.getElementById('calc').onclick = function () {
                стоимость одного часа: ${result[1].toFixed(2)} бел.руб<br>
                стоимость одной минуты: ${result[2].toFixed(2)} бел.руб<br>
                стоимость одной секунды: ${result[3].toFixed(4)} бел.руб`;
-    alert(text);
     document.getElementById("inner_result").innerHTML += text;
+    alert(document.getElementById("inner_result").textContent);
 }
 
 function calculate() {
@@ -36,13 +34,12 @@ function calculate() {
     if (isCountLessons[0].checked) {
         countHours = countLessonsOrHours * lessonHours;
         costHours = costCourse / countLessonsOrHours / lessonHours;
-        document.getElementById("inner_result").innerHTML = `Количество часов: ${countHours}<br>`;
+        document.getElementById("inner_result").innerHTML = `Количество часов: ${countHours}\n<br>`;
         return [costHours * lessonHours, costHours, costHours / 60, costHours / 60 / 60]
     } else {
         countLessons = countLessonsOrHours / lessonHours;
         costHours = costCourse / countLessonsOrHours;
-        document.getElementById("inner_result").innerHTML = `Количество занятий: ${countLessons}<br>`;
+        document.getElementById("inner_result").innerHTML = `Количество занятий: ${countLessons}\n<br>`;
         return [costHours * lessonHours, costHours, costHours / 60, costHours / 60 / 60]
     }
 }
-
