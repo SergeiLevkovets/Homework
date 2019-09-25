@@ -12,7 +12,7 @@ document.getElementById('calc').onclick = function () {
     countLessonsOrHours = form.lessonsCount.value;
     lessonHours = form.hoursInLesson.value;
     isCountLessons = form.elements.count;
-    
+
     if (!calculate()) {
         return;
     }
