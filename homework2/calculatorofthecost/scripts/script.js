@@ -12,11 +12,10 @@ document.getElementById('calc').onclick = function () {
     countLessonsOrHours = form.lessonsCount.value;
     lessonHours = form.hoursInLesson.value;
     isCountLessons = form.elements.count;
-    
-    if (!calculate()) {
+    let result = calculate();
+    if (!result) {
         return;
     }
-    let result = calculate();
     let text = `Стоимость каждого занятия: ${result[0].toFixed(2)} бел.руб<br>
                стоимость одного часа: ${result[1].toFixed(2)} бел.руб<br>
                стоимость одной минуты: ${result[2].toFixed(2)} бел.руб<br>

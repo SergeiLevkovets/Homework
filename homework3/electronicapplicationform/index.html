@@ -11,7 +11,7 @@
 <form class="my_form" name="my_form" id="my_form">
     <div class="ferst size">
         1. Фамилия*:<br>
-        <input type="text" name="last_name" id="last_name" pattern="^\S.*\S$" required><br><br>
+        <input type="text" name="last_name" id="last_name"  required><br><br>
         2. Имя*:<br>
         <input type="text" name="name" id="name" required><br><br>
         3. Отчество:<br>
@@ -79,17 +79,26 @@
             <div class="right">
                 <input type="checkbox" id="metro" name="sources"/><label for="metro">Реклама в метро.</label><br>
                 <input type="checkbox" id="friends" name="sources"/><label for="friends">От знакомых</label><br>
-                <input type="checkbox" id="other" name="sources"/><label for="other">Другое</label>
+                <input type="checkbox" id="other" name="sources" onchange="enableOther()"/><label for="other">Другое</label>
             </div>
         </div>
 
         <div class="other">
-            12. Другое
-            <pre class="mark" hidden>*</pre>
-            :<br>
-            <textarea name="other" id="other_text" rows="3" cols="30"></textarea><br><br>
+            12. Другое:<br>
+            <textarea
+                 name="other"
+                 id="other_text"
+                 rows="3"
+                 cols="30"
+                 disabled
+            ></textarea><br><br>
             13. Прочие Рекомендации:<br>
-            <textarea name="recommendations" id="recommendations" rows="3" cols="30"></textarea><br><br>
+            <textarea
+                name="recommendations"
+                id="recommendations"
+                rows="3"
+                cols="30">
+            </textarea><br><br>
         </div>
     </div>
 
