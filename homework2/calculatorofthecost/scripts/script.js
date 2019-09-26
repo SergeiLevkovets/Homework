@@ -5,7 +5,7 @@ let countLessons;
 let countHours;
 let lessonHours;
 let isCountLessons;
-    
+
 document.getElementById('calc').onclick = function () {
     form = document.forms.my_form;
     costCourse = form.courseCost.value;

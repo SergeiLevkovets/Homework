@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Lobster|Oswald&display=swap&subset=cyrillic"
+          rel="stylesheet"
+    >
+</head>
+<body>
+<div class="wrapper">
+    <div class="header ">
+        <div class="heder_inner shadow">
+            <div class="icon">
+                <a href="personalpage.html"><img class="icon_img" src="images/logo.png"/></a>
+            </div>
+            <div class="logo">
+                Левковец Сергей Андреевич
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="sidebar">
+            <div class="sidebar_inner shadow">
+                <a class="sid_menu a_demo_one" href="homepage.html">Домашняя страница</a><br>
+                <a class="sid_menu a_demo_one" href="autorization.html">Авторизация</a><br>
+                <a class="sid_menu a_demo_one" href="registration.html">Регистрация</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="nav shadow">
+                <div class="nav_inner">
+                    <a class="nav_link" href="homepage.html">Домашняя страница</a>
+                    <a class="nav_link" href="autorization.html">Авторизация</a>
+                    <a class="nav_link" href="registration.html">Регистрация</a>
+                </div>
+            </div>
+            <div class="inner_content shadow">
+                <form>
+                    <h2>Регистрация</h2><br>
+                    <h3>реквизиты</h3>
+                    <div>
+                        Email*:
+                        <input type="email" name="email"/>
+                        Повторить Email*:
+                        <input type="email" name="checkEmail"/>
+                        <br/>
+                    </div>
+                    <div>
+                        Пароль*:
+                        <input type="password" name="password"/>
+                        Повторить пароль*:
+                        <input type="password" name="password"/>
+                        <br/>
+                        * поля обязательные для заполнения
+                    </div>
+                    <br>
+                    <div class="personal">
+                        <h3>Персональные данные</h3><br>
+                        Имя*:
+                        <input type="text" name="name"/><br/>
+                        Телефон*:
+                        <input type="tel" name="phone"/><br/>
+                        Город*:
+                        <input type="text" name="sity"/><br/>
+                        Страна*:
+                        <select name="country">
+                            <option>Беларусь</option>
+                            <option>Россия</option>
+                            <option>Украина</option>
+                            <option>Казакстан</option>
+                        </select><br>
+                        Веб-сайт:
+                        <input type="url" name="site" value="http://"/><br/>
+                    </div>
+                    <br>
+                    <div class="dopinfo">
+                        <h3>Дополнительная информация</h3><br>
+                        Пол:
+                        <input type="radio" id="male" name="sex"/><label for="male">Мужской</label>
+                        <input type="radio" id="fomale" name="sex"/><label for="fomale">Женский</label><br/>
+                        День рождения:
+                        <input type="date"><br>
+                        Национальность:
+                        <select name="nationaliti">
+                            <option>Белорус</option>
+                            <option>Руский</option>
+                            <option>Украинец</option>
+                            <option>Казах</option>
+                        </select><br>
+                        дети:
+                        <input type="checkbox" id="saved" name="save"/><br>
+                        <textarea rows="7" cols="30">Информация о вас</textarea><br/>
+                    </div>
+                    <br>
+                    <div class="subm">
+                        <h3>Условия и рассылки</h3><br>
+                        <input type="checkbox" id="submint" name="save"/><label for="submint">Я согласен с
+                        условиями</label>
+                        <br/>
+                        <input type="checkbox" id="submin" name="save"/><label for="submin">Я хочу получать персональные
+                        предложения на вашем сайте </label>
+                        <br/>
+                        <input type="checkbox" id="submi" name="save"/><label for="submi">Разрешение партнерам
+                        на рассылку персонализированых<br>предложений и связаных с ним услуг</label>
+                    </div>
+                    <input class="a_demo_one" type="submit" value="Регистрация"/><br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_inner shadow">
+            <p>
+                Copyright 2019 &#169 Все права защищены<br>
+                Левковец Сергей, Минск
+            </p>
+		</div>
+    </div>
+</div>
+</body>
+</html>
