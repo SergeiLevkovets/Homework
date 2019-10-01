@@ -7,189 +7,119 @@
     <script type="text/javascript" src="scripts/script.js" defer></script>
 </head>
 <body>
-<h1>Электронная анкета<br>для оценки качества образования.</h1>
-<form class="my_form" name="my_form" id="my_form">
-    <div class="ferst size">
-        1. Фамилия*:<br>
-        <input
-            type="text"
-            name="last_name"
-            id="last_name"
-            required
-        /><br><br>
-        2. Имя*:<br>
-        <input
-            type="text"
-            name="name"
-            id="name"
-            required
-        /><br><br>
-        3. Отчество:<br>
-        <input
-            type="text"
-            name="middle_name"
-            id="middle_name"
-        /><br><br>
-        4. Секретная Фраза*:<br>
-        <input
-            type="password"
-            name="password"
-            id="password"
-            required
-        /><br><br>
-    </div>
-    <div class="sex size">
-        5. Возраст:<br>
-        <input
-            type="number"
-            name="age"
-            id="age"
-            min="0"
-            max="130"
-        /><br><br>
-        6. Пол*:<br>
-        <input
-            type="radio"
-            id="male"
-            name="sex"
-            required
-        /><label for="male">Мужской</label>
-        <input
-            type="radio"
-            id="fomale"
-            name="sex"
-            required
-        /><label for="fomale">Женский</label><br/><br>
-    </div>
-    <div class="courses size">
-        7. Курс*:<br>
-        <select
-            name="course"
-            id="course"
-            required
-            onchange="disableSelectCourse()"
-        >
-            <option hidden></option>
-            <option value="java_se">Java SE</option>
-            <option value="java_ee">Java EE</option>
-            <option value="python">Python/Django</option>
-            <option value="html_css">HTML и CSS</option>
-            <option value="javascript">JavaScript (Angular)</option>
-            <option value="php_sql">PHP, MySQL, Laravel</option>
-            <option value="tester">Тестирование</option>
-        </select><br><br>
-        8. Преподаватель*:<br>
-        <select name="teacher" id="teacher" required>
-            <option hidden></option>
-            <option value="ivanov">Иванов Иван Иванович</option>
-            <option value="petrov">Петров Петр Петрович</option>
-            <option value="sidorov">Сидоров Сидор Сидорович</option>
-        </select><br><br>
-        9. Оценка курса*:<br>
-        <select name="Assessment" id="assessment" required>
-            <option hidden></option>
-            <option value="one">1</option>
-            <option value="two">2</option>
-            <option value="three">3</option>
-            <option value="four">4</option>
-            <option value="five">5</option>
-        </select><br><br>
-        10. Прочие курсы*:<br>
-        <select name="other_course[]" id="other_course"
-                multiple="multiple"
-                required
-                title="Выбирете несколько вариантов
-            при помощи Ctrl"
-        >
-            <option value="java_se">Java SE</option>
-            <option value="java_ee">Java EE</option>
-            <option value="python">Python/Django</option>
-            <option value="html_css">HTML и CSS</option>
-            <option value="javascript">JavaScript (Angular)</option>
-            <option value="php_sql">PHP, MySQL, Laravel</option>
-            <option value="tester">Тестирование</option>
-        </select><br><br>
-    </div>
-    <div class="other">
-        <div class="sources">
-            11. Как Вы о нас узнали*:<br>
-            <div class="left">
-                <input
-                    type="checkbox"
-                    id="tv"
-                    name="sources"
-                /><label for="tv">Реклама по ТВ.</label><br>
-                <input
-                    type="checkbox"
-                    id="radio"
-                    name="sources"
-                /><label for="radio">Реклама по радио.</label><br>
-                <input
-                    type="checkbox"
-                    id="inet"
-                    name="sources"
-                /><label for="inet">Реклама в Интернете.</label>
-            </div>
-
-            <div class="right">
-                <input
-                    type="checkbox"
-                    id="metro"
-                    name="sources"
-                /><label for="metro">Реклама в метро.</label><br>
-                <input
-                    type="checkbox"
-                    id="friends"
-                    name="sources"
-                /><label for="friends">От знакомых</label><br>
-                <input
-                    type="checkbox"
-                    id="other"
-                    name="sources"
-                    onchange="enableOther()"
-                /><label for="other">Другое</label>
-            </div>
+    <h1>Электронная анкета<br>для оценки качества образования.</h1>
+    <form class="my_form" name="my_form" id="my_form">
+        <div class="ferst size">
+            1. Фамилия*:<br>
+            <input type="text" name="last_name" id="last_name"/><br><br>
+            2. Имя*:<br>
+            <input type="text" name="name" id="name"/><br><br>
+            3. Отчество:<br>
+            <input type="text" name="middle_name" id="middle_name"/><br><br>
+            4. Секретная Фраза*:<br>
+            <input type="password" name="password" id="password"/><br><br>
         </div>
-
+        <div class="sex size">
+            5. Возраст:<br>
+            <input type="text" name="age" id="age" /><br><br>
+            6. Пол*:<br>
+            <label><input type="radio" name="sex" id="sex_men" value="men"/>Мужской</label>
+            <label><input type="radio" name="sex" id="sex_women" value="women"/>Женский</label>
+            <br/><br>
+        </div>
+        <div class="courses size">
+            7. Курс*:<br>
+            <select name="course" id="course" onchange="disableSelectedCourseInOtherCourses()">
+                <option hidden></option>
+                <option value="java_se">Java SE</option>
+                <option value="java_ee">Java EE</option>
+                <option value="python">Python/Django</option>
+                <option value="html_css">HTML и CSS</option>
+                <option value="javascript">JavaScript (Angular)</option>
+                <option value="php_sql">PHP, MySQL, Laravel</option>
+                <option value="tester">Тестирование</option>
+            </select><br><br>
+            8. Преподаватель*:<br>
+            <select name="teacher" id="teacher">
+                <option hidden></option>
+                <option value="ivanov">Иванов Иван Иванович</option>
+                <option value="petrov">Петров Петр Петрович</option>
+                <option value="sidorov">Сидоров Сидор Сидорович</option>
+            </select><br><br>
+            9. Оценка курса*:<br>
+            <select name="grade" id="grade">
+                <option hidden></option>
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+                <option value="five">5</option>
+            </select><br><br>
+            10. Прочие курсы*:<br>
+            <select name="other_course[]" id="other_course" multiple="multiple"
+                    title='Выбирете несколько вариантов
+                   при помощи Ctrl'
+            >
+                <option value="java_se">Java SE</option>
+                <option value="java_ee">Java EE</option>
+                <option value="python">Python/Django</option>
+                <option value="html_css">HTML и CSS</option>
+                <option value="javascript">JavaScript (Angular)</option>
+                <option value="php_sql">PHP, MySQL, Laravel</option>
+                <option value="tester">Тестирование</option>
+            </select><br><br>
+        </div>
         <div class="other">
-            12. Другое:<br>
-            <textarea
-                name="other"
-                id="other_text"
-                rows="3"
-                cols="30"
-                disabled
-                required
-            ></textarea><br><br>
-            13. Прочие Рекомендации:<br>
-            <textarea
-                name="recommendations"
-                id="recommendations"
-                rows="3"
-                cols="30"
-            ></textarea><br><br>
+            <div class="sources">
+                11. Как Вы о нас узнали*:<br>
+                <div class="left">
+                    <label><input type="checkbox" id="tv" name="tv" value="tv"/>Реклама по ТВ.</label><br>
+                    <label><input type="checkbox" id="radio" name="radio" value="radio"/>Реклама по радио.</label><br>
+                    <label><input type="checkbox" id="inet" name="inet" value="inet"/>Реклама в Интернете.</label>
+                </div>
+
+                <div class="right">
+                    <label><input type="checkbox" id="metro" name="metro" value="metro"/>Реклама в метро.</label><br>
+                    <label><input type="checkbox" id="friends" name="friends" value="friends"/>От знакомых</label><br>
+                    <label><input type="checkbox" id="other" name="other" value="other" onchange="enableOtherField()"/>Другое</label>
+                </div>
+            </div>
+
+            <div class="other">
+                12. Другое:<br>
+                <textarea name="other_text" id="other_text" rows="3" cols="30" disabled></textarea><br><br>
+                13. Прочие Рекомендации:<br>
+                <textarea name="recommendations" id="recommendations" rows="3" cols="30"></textarea><br><br>
+            </div>
+        </div>
+
+        <div class="button">
+            <input type="button" id="true_answer" name="true_answer" value="Отправить – здесь все правда"/>
+            <input type="button" id="false_answer" name="false_answer" value="Отправить – я все равно все наврал"/>
+        </div>
+
+    </form>
+    <div class="result">
+        <div class="inner_result" id="inner_result">
+            <!--<table>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>Ivan</td>
+                </tr>
+                <tr>
+                    <td>LastName</td>
+                    <td>Ivanov</td>
+                </tr>
+
+
+            </table>-->
+
         </div>
     </div>
-
-    <div class="button">
-        <input
-            type="submit"
-            id="true_answer"
-            name="true_answer"
-            value="Отправить – здесь все правда"
-        />
-        <input
-            type="hidden"
-            id="false_answer"
-            name="false_answer"
-            value="Отправить – я все равно все наврал"
-        />
-    </div>
-
-</form>
-<div class="result">
-    <div class="inner_result" id="inner_result"></div>
-</div>
 
 </body>
 </html>

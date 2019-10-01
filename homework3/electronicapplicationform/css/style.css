@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-    background: #84f096;
+    background: #d8d8ff;
     color: #292120;
     border: 5px outset #819ea0;
     position: relative;
@@ -16,6 +16,47 @@ body {
 
 h1 {
     text-align: center;
+}
+
+button {
+    margin-right: 10px;
+}
+
+table {
+    border: 2px solid
+}
+
+td {
+    border: 1px solid;
+}
+
+.answer_outer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.answer {
+    left: 200px;
+    right: auto;
+    top: 300px;
+    position: absolute;
+    margin: auto;
+    padding: 15px;
+    border: 2px black solid;
+    background: #6fc6ff;
+    text-align: center;
+}
+
+.true_form {
+    width: 300px;
+}
+
+.false_form {
+    width: 300px;
 }
 
 .inner_result {
