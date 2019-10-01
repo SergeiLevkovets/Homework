@@ -146,10 +146,7 @@ function createRowCourse(elem, name) {
 function createTable() {
     innerResult.innerHTML = "";
     let table = document.createElement("table");
-    table.innerHTML = "<tr>\n" +
-        "<th>Name</th>\n" +
-        "<th>Value</th>\n" +
-        "</tr>";
+    table.innerHTML = "<tr><th>Name</th><th>Value</th></tr>";
     for (let elem of document.getElementById("my_form").elements) {
         if (isEmpty(elem.value)) {
             continue;
