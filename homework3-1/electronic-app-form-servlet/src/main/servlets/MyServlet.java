@@ -20,15 +20,29 @@ public class MyServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         Map<String, String[]> parameterMap = Validation.validationMap(request);
 
-        writer.println("<style>table {border: 2px solid} td {border: 1px solid}</style>");
-        writer.println("<table><tbody><tr><th>Name</th><th>Value</th></tr>");
+        writer.println("<!DOCTYPE html>");
+        writer.println("<html>");
+        writer.println("<head>");
+        writer.println("<meta charset=\"UTF-8\">");
+        writer.println("<title>Result</title>");
+        writer.println("<link rel=\"stylesheet\" href=\"css/style.css\">");
+        writer.println("</head>");
+        writer.println("<body>");
+        writer.println("<table class=\"result_table\">");
+        writer.println("<tbody>");
+        writer.println("<tr>");
+        writer.println("<th>Name</th><th>Value</th>");
+        writer.println("</tr>");
 
         for (String param : parameterMap.keySet()) {
             for (String value : parameterMap.get(param)) {
                 writer.println("<tr><td>" + param + "</td><td>" + value + "</td></tr>");
             }
         }
-        writer.println("</tbody></table>");
+        writer.println("</tbody>");
+        writer.println("</table>");
+        writer.println("</body>\"");
+        writer.println("</html>");
         writer.close();
     }
 }

@@ -2,13 +2,13 @@ package main;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Validation {
 
-    private static final String MESSAGE = "<strong style=\"color: red\">Введены неверные данные</strong>";
+    private static final String[] MESSAGE = new String[]{"<strong style=\"color: red\">Введены неверные данные</strong>"};
     private static List<String> paramForValidation = new ArrayList<>();
 
     static {
@@ -23,66 +23,67 @@ public class Validation {
         paramForValidation.add("sources");
     }
 
-    private static void otherTextValidation(Map<String, String[]> parameterMap) {
-
+    private static boolean isEmpty(String value) {
+        return value.trim().equals("");
     }
 
-    private static boolean isEmpty(String value) {
-        return value.trim() == "";
+    private static boolean isNotEmpty(String value) {
+        return !value.trim().equals("");
     }
 
     public static Map<String, String[]> validationMap(HttpServletRequest request) {
-        Map<String, String[]> resultMap = new LinkedHashMap<>();
+        Map<String, String[]> resultMap = new HashMap<>();
         Map<String, String[]> parameterMap = request.getParameterMap();
 
         for (String param : paramForValidation) {
-            if (parameterMap.keySet().contains(param)) {
+            if (parameterMap.containsKey(param)) {
                 if (parameterMap.get(param).length == 1) {
-                    if (isEmpty(parameterMap.get(param)[0])) {
-                        resultMap.put(param, new String[]{MESSAGE});
+                    String paramValue = parameterMap.get(param)[0];
+                    if (isEmpty(paramValue)) {
+                        resultMap.put(param, MESSAGE);
                         continue;
                     }
                 }
                 resultMap.put(param, parameterMap.get(param));
             } else {
-                resultMap.put(param, new String[]{MESSAGE});
+                resultMap.put(param, MESSAGE);
             }
         }
 
-        if (parameterMap.keySet().contains("middle_name")) {
-            if (parameterMap.get("middle_name")[0].trim() != "") {
-                resultMap.put("middle_name", parameterMap.get("recommendations"));
-            }
-        }
-
-        if (parameterMap.keySet().contains("age")) {
-            if (parameterMap.get("age")[0].trim() != "") {
-                if (parameterMap.get("age")[0].matches("[-+]?\\d+")) {
-                    resultMap.put("age", parameterMap.get("age"));
-                } else {
-                    resultMap.put("age", new String[]{MESSAGE});
-                }
-            }
-        }
-
-
-        if (parameterMap.keySet().contains("other_text") ) {
-            if (isEmpty(parameterMap.get("other_text")[0])) {
-                resultMap.put("other_text", new String[]{MESSAGE});
+        if (parameterMap.containsKey("other_text")) {
+            String otherTextValue = parameterMap.get("other_text")[0];
+            if (isEmpty(otherTextValue)) {
+                resultMap.put("other_text", MESSAGE);
             } else {
                 resultMap.put("other_text", parameterMap.get("other_text"));
             }
         }
 
-        if (parameterMap.keySet().contains("recommendations")) {
-            if (parameterMap.get("recommendations")[0].trim() != "") {
+        if (parameterMap.containsKey("middle_name")) {
+            String middleNameValue = parameterMap.get("middle_name")[0];
+            if (isNotEmpty(middleNameValue)) {
+                resultMap.put("middle_name", parameterMap.get("middle_name"));
+            }
+        }
+
+        if (parameterMap.containsKey("age")) {
+            String ageValue = parameterMap.get("age")[0];
+            if (isNotEmpty(ageValue)) {
+                if (ageValue.matches("[-+]?\\d+")) {
+                    resultMap.put("age", parameterMap.get("age"));
+                } else {
+                    resultMap.put("age", MESSAGE);
+                }
+            }
+        }
+
+        if (parameterMap.containsKey("recommendations")) {
+            String recommendationsValue = parameterMap.get("recommendations")[0];
+            if (isNotEmpty(recommendationsValue)) {
                 resultMap.put("recommendations", parameterMap.get("recommendations"));
             }
         }
 
         return resultMap;
-
     }
-
-
 }
