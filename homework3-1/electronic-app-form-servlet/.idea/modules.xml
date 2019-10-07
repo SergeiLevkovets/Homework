@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/homework3-1.iml" filepath="$PROJECT_DIR$/.idea/homework3-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electronic-app-form-servlet.iml" filepath="$PROJECT_DIR$/electronic-app-form-servlet.iml" />
     </modules>
   </component>
 </project>

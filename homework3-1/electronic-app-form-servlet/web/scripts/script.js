@@ -70,6 +70,7 @@ lastName.onblur = function () {
         setInvalid(this);
     }
 };
+
 lastName.onfocus = function () {
     setValid(this)
 };
@@ -79,6 +80,7 @@ name.onblur = function () {
         setInvalid(this);
     }
 };
+
 name.onfocus = function () {
     setValid(this)
 };
@@ -88,6 +90,7 @@ password.onblur = function () {
         setInvalid(this);
     }
 };
+
 password.onfocus = function () {
     setValid(this)
 };
