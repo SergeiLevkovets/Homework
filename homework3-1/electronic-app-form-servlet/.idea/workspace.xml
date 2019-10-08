@@ -7,12 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5917e316-3c17-4f65-abb7-8efcfbf6e4ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/stormnet/task31/util/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/servlets/MyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/stormnet/task31/servlet/MyServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/stormnet/task31/servlet/MyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/stormnet/task31/servlet/MyServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/scripts/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +168,7 @@
       <updated>1570450516991</updated>
       <workItem from="1570450522161" duration="433000" />
       <workItem from="1570451136329" duration="2825000" />
-      <workItem from="1570536770285" duration="1094000" />
+      <workItem from="1570536770285" duration="1701000" />
     </task>
     <task id="LOCAL-00001" summary="homework3-1">
       <created>1570453803074</created>
@@ -181,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570453803074</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="3-1">
+      <created>1570537898957</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1570537898957</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +205,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="homework3-1" />
-    <option name="LAST_COMMIT_MESSAGE" value="homework3-1" />
+    <MESSAGE value="3-1" />
+    <option name="LAST_COMMIT_MESSAGE" value="3-1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1570450774886">
@@ -265,9 +269,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1570450647590" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1570453809494">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1570537901572">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1570453809494" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1570537901572" />
   </component>
 </project>

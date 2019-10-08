@@ -237,7 +237,7 @@ buttonFalseAnswer.addEventListener("click", function () {
     ok.addEventListener("click", function () {
         createTable()
         answerOuter.remove();
-        // document.getElementById("my_form").submit();
+        document.getElementById("my_form").submit();
     });
     cancel.addEventListener("click", function () {
         answerOuter.remove();

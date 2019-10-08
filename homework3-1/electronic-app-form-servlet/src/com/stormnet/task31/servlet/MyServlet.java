@@ -41,7 +41,7 @@ public class MyServlet extends HttpServlet {
         }
         writer.println("</tbody>");
         writer.println("</table>");
-        writer.println("</body>\"");
+        writer.println("</body>");
         writer.println("</html>");
         writer.close();
     }
