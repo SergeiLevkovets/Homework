@@ -1,4 +1,4 @@
-package main;
+package com.stormnet.task31.util;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -9,6 +9,10 @@ import java.util.Map;
 public class Validation {
 
     private static final String[] MESSAGE = new String[]{"<strong style=\"color: red\">Введены неверные данные</strong>"};
+    private static final String OTHER_TEXT = "other_text";
+    private static final String MIDDLE_NAME = "middle_name";
+    private static final String AGE = "age";
+    private static final String RECOMMENDATIONS = "recommendations";
     private static List<String> paramForValidation = new ArrayList<>();
 
     static {
@@ -24,11 +28,15 @@ public class Validation {
     }
 
     private static boolean isEmpty(String value) {
+        if (value == null){
+            return true;
+        }
+
         return value.trim().equals("");
     }
 
     private static boolean isNotEmpty(String value) {
-        return !value.trim().equals("");
+        return !isEmpty(value);
     }
 
     public static Map<String, String[]> validationMap(HttpServletRequest request) {
@@ -50,37 +58,37 @@ public class Validation {
             }
         }
 
-        if (parameterMap.containsKey("other_text")) {
-            String otherTextValue = parameterMap.get("other_text")[0];
+        if (parameterMap.containsKey(OTHER_TEXT)) {
+            String otherTextValue = parameterMap.get(OTHER_TEXT)[0];
             if (isEmpty(otherTextValue)) {
-                resultMap.put("other_text", MESSAGE);
+                resultMap.put(OTHER_TEXT, MESSAGE);
             } else {
-                resultMap.put("other_text", parameterMap.get("other_text"));
+                resultMap.put(OTHER_TEXT, parameterMap.get(OTHER_TEXT));
             }
         }
 
-        if (parameterMap.containsKey("middle_name")) {
-            String middleNameValue = parameterMap.get("middle_name")[0];
+        if (parameterMap.containsKey(MIDDLE_NAME)) {
+            String middleNameValue = parameterMap.get(MIDDLE_NAME)[0];
             if (isNotEmpty(middleNameValue)) {
-                resultMap.put("middle_name", parameterMap.get("middle_name"));
+                resultMap.put(MIDDLE_NAME, parameterMap.get(MIDDLE_NAME));
             }
         }
 
-        if (parameterMap.containsKey("age")) {
-            String ageValue = parameterMap.get("age")[0];
+        if (parameterMap.containsKey(AGE)) {
+            String ageValue = parameterMap.get(AGE)[0];
             if (isNotEmpty(ageValue)) {
                 if (ageValue.matches("[-+]?\\d+")) {
-                    resultMap.put("age", parameterMap.get("age"));
+                    resultMap.put(AGE, parameterMap.get(AGE));
                 } else {
-                    resultMap.put("age", MESSAGE);
+                    resultMap.put(AGE, MESSAGE);
                 }
             }
         }
 
-        if (parameterMap.containsKey("recommendations")) {
-            String recommendationsValue = parameterMap.get("recommendations")[0];
+        if (parameterMap.containsKey(RECOMMENDATIONS)) {
+            String recommendationsValue = parameterMap.get(RECOMMENDATIONS)[0];
             if (isNotEmpty(recommendationsValue)) {
-                resultMap.put("recommendations", parameterMap.get("recommendations"));
+                resultMap.put(RECOMMENDATIONS, parameterMap.get(RECOMMENDATIONS));
             }
         }
 

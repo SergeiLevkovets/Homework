@@ -1,6 +1,6 @@
-package main.servlets;
+package com.stormnet.task31.servlet;
 
-import main.Validation;
+import com.stormnet.task31.util.Validation;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
