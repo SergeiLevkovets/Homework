@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Validation {
 
-    private static final String[] MESSAGE = new String[]{"<strong style=\"color: red\">Введены неверные данные</strong>"};
+    private static final String MESSAGE = "${error}";
     private static final String MIDDLE_NAME = "middle_name";
     private static final String AGE = "age";
     private static final String OTHER_COURSE = "other_course[]";
@@ -79,9 +79,6 @@ public class Validation {
 
         if (parameterMap.containsKey(OTHER_COURSE)){
             request.setAttribute(OTHER_COURSE, parameterMap.get(OTHER_COURSE));
-        }else {
-            request.setAttribute(OTHER_COURSE, MESSAGE);
-            result = true;
         }
 
         if (parameterMap.containsKey(SOURCES)){
