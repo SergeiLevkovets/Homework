@@ -17,15 +17,22 @@ public class ResultServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
 
-        if (Validation.isInvalidation(request)) {
+        Validation validation = (Validation) request.getAttribute("validation");
+        if (validation == null) {
+            validation = new Validation();
+            request.setAttribute("validation", validation);
+        }
+
+
+        if (validation.isInvalidation(request)) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
             dispatcher.forward(request, response);
         }
 
 
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
         writer.println("<!DOCTYPE html>");
