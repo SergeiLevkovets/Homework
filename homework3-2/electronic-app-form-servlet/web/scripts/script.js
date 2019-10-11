@@ -37,7 +37,7 @@ function validation() {
         return;
     }
     if (!sex[0].checked && !sex[1].checked) {
-        alert("Выберите пол")
+        alert("Выберите пол");
         return;
     }
     if (isEmpty(course.value)) {
@@ -58,7 +58,7 @@ function validation() {
         return;
     }
     if (isEmpty(otherText.value) && other.checked) {
-        alert("Отвергаешь – предлагай!")
+        alert("Отвергаешь – предлагай!");
         return;
     }
     return true;
@@ -72,7 +72,7 @@ lastName.onblur = function () {
 };
 
 lastName.onfocus = function () {
-    setValid(this)
+    setValid(this);
 };
 
 name.onblur = function () {
@@ -82,7 +82,7 @@ name.onblur = function () {
 };
 
 name.onfocus = function () {
-    setValid(this)
+    setValid(this);
 };
 
 password.onblur = function () {
@@ -92,7 +92,7 @@ password.onblur = function () {
 };
 
 password.onfocus = function () {
-    setValid(this)
+    setValid(this);
 };
 
 function isEmpty(value) {
@@ -113,7 +113,7 @@ function enableOtherField() {
     if (other.checked) {
         otherText.disabled = false;
     } else {
-        otherText.disabled = true
+        otherText.disabled = true;
         otherText.value = '';
     }
 }
@@ -121,7 +121,7 @@ function enableOtherField() {
 function disableSelectedCourseInOtherCourses() {
     for (let elem of otherCourse.children) {
         elem.disabled = false;
-        if (course.value == elem.value) {
+        if (course.value === elem.value) {
             elem.disabled = true;
             elem.selected = false;
         }
@@ -156,16 +156,16 @@ function createTable() {
         if (isEmpty(elem.value)) {
             continue;
         }
-        if (elem.type == "button") {
+        if (elem.type === "button") {
             continue;
         }
-        if (elem.type == "radio" || elem.type == "checkbox") {
+        if (elem.type === "radio" || elem.type === "checkbox") {
             if (elem.checked) {
                 table.append(createRow(elem));
             }
             continue;
         }
-        if (elem.type == "select-multiple") {
+        if (elem.type === "select-multiple") {
             for (let obj of elem.selectedOptions) {
                 table.append(createRowCourse(obj, elem.name));
             }
@@ -235,7 +235,7 @@ buttonFalseAnswer.addEventListener("click", function () {
     document.body.append(answerOuter);
 
     ok.addEventListener("click", function () {
-        createTable()
+        createTable();
         answerOuter.remove();
         document.getElementById("my_form").submit();
     });

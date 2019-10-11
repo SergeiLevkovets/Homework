@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
+import java.util.LinkedList;
 
 @WebServlet("/result-servlet.html")
 public class ResultServlet extends HttpServlet {
@@ -48,9 +48,8 @@ public class ResultServlet extends HttpServlet {
         writer.println("<tr>");
         writer.println("<th>Name</th><th>Value</th>");
         writer.println("</tr>");
-        Enumeration<String> attributeNames = request.getAttributeNames();
-        while (attributeNames.hasMoreElements()) {
-            String attributeName = attributeNames.nextElement();
+        LinkedList<String> attributeNames = validation.getParamForValidationFull();
+        for (String attributeName : attributeNames) {
             if (attributeName.equals("other_course[]") || attributeName.equals("sources")) {
                 for (String value : (String[]) request.getAttribute(attributeName)) {
                     writer.println("<tr><td>" + attributeName + "</td><td>" + value + "</td></tr>");

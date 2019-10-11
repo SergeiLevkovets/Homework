@@ -148,12 +148,12 @@ public class ParameterAssigner {
                 }
                 case OTHER_TEXT: {
                     String value = (String) request.getAttribute(OTHER_TEXT);
-                    parameterMap.put(OTHER_TEXT, setValueForMap(value));
+                    parameterMap.put(OTHER_TEXT, value);
                     break;
                 }
                 case RECOMMENDATIONS: {
                     String value = (String) request.getAttribute(RECOMMENDATIONS);
-                    parameterMap.put(RECOMMENDATIONS, setValueForMap(value));
+                    parameterMap.put(RECOMMENDATIONS, value);
                     break;
                 }
             }

@@ -120,9 +120,9 @@ public class IndexServlet extends HttpServlet {
         writer.println("</div>");
         writer.println("<div class=\"other\">");
         writer.println("12. Другое: "+errorsMap.get("other_text")+"<br>");
-        writer.println("<textarea name=\"other_text\" id=\"other_text\" rows=\"3\" cols=\"30\" " + parameterMap.get("other_text") + " "+ parameterMap.get("other_text_disabled") +"></textarea><br><br>");
+        writer.println("<textarea name=\"other_text\" id=\"other_text\" rows=\"3\" cols=\"30\" "+ parameterMap.get("other_text_disabled") +">" + parameterMap.get("other_text") + "</textarea><br><br>");
         writer.println("13. Прочие Рекомендации:<br>");
-        writer.println("<textarea name=\"recommendations\" id=\"recommendations\" rows=\"3\" cols=\"30\" " + parameterMap.get("recommendations") + "></textarea><br><br>");
+        writer.println("<textarea name=\"recommendations\" id=\"recommendations\" rows=\"3\" cols=\"30\">" + parameterMap.get("recommendations") + "</textarea><br><br>");
         writer.println("</div>");
         writer.println("</div>");
         writer.println("<div class=\"button\">");

@@ -1,10 +1,7 @@
 package com.stormnet.task31.util;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Validation {
 
@@ -15,6 +12,25 @@ public class Validation {
     private static final String SOURCES = "sources";
     private static final String OTHER_TEXT = "other_text";
     private static final String RECOMMENDATIONS = "recommendations";
+    private LinkedList<String> paramForValidationFull;
+
+    public LinkedList<String> getParamForValidationFull() {
+        paramForValidationFull = new LinkedList<>();
+        paramForValidationFull.addLast("last_name");
+        paramForValidationFull.addLast( "name");
+        paramForValidationFull.addLast("middle_name");
+        paramForValidationFull.addLast("password");
+        paramForValidationFull.addLast("age");
+        paramForValidationFull.addLast("sex");
+        paramForValidationFull.addLast("course");
+        paramForValidationFull.addLast("teacher");
+        paramForValidationFull.addLast("grade");
+        paramForValidationFull.addLast("other_course[]");
+        paramForValidationFull.addLast("sources");
+        paramForValidationFull.addLast("other_text");
+        paramForValidationFull.addLast("recommendations");
+        return paramForValidationFull;
+    }
 
     private List<String> paramForValidation = new ArrayList<>();
      {
