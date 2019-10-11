@@ -52,7 +52,7 @@ public class ParameterAssigner {
         parameterMap.put("otherCourse_html_css", "");
         parameterMap.put("otherCourse_javascript", "");
         parameterMap.put("otherCourse_php_sql", "");
-        parameterMap.put("otherCourseDis_tester", "");
+        parameterMap.put("otherCourse_tester", "");
         parameterMap.put("otherCourseDis_java_se", "");
         parameterMap.put("otherCourseDis_java_ee", "");
         parameterMap.put("otherCourseDis_python", "");
@@ -160,7 +160,6 @@ public class ParameterAssigner {
 
         }
     }
-
 
     public Map<String, String> getParameterMap() {
         return parameterMap;
