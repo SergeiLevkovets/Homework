@@ -1,7 +1,7 @@
-package com.stormnet.task31.servlet;
+package com.stormnet.task32.servlet;
 
-import com.stormnet.task31.util.ParameterAssigner;
-import com.stormnet.task31.util.Validation;
+import com.stormnet.task32.util.ParameterAssigner;
+import com.stormnet.task32.util.Validation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
