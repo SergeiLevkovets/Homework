@@ -17,7 +17,7 @@ public class Validation {
     public LinkedList<String> getParamForValidationFull() {
         paramForValidationFull = new LinkedList<>();
         paramForValidationFull.addLast("last_name");
-        paramForValidationFull.addLast( "name");
+        paramForValidationFull.addLast("name");
         paramForValidationFull.addLast("middle_name");
         paramForValidationFull.addLast("password");
         paramForValidationFull.addLast("age");
@@ -33,7 +33,8 @@ public class Validation {
     }
 
     private List<String> paramForValidation = new ArrayList<>();
-     {
+
+    {
         paramForValidation.add("last_name");
         paramForValidation.add("name");
         paramForValidation.add("password");
@@ -44,21 +45,15 @@ public class Validation {
     }
 
     private Map<String, String> errorsMap = new HashMap<>();
-    {
-        errorsMap.put("last_name", "");
-        errorsMap.put("name", "");
-        errorsMap.put("password", "");
-        errorsMap.put("age", "");
-        errorsMap.put("sex", "");
-        errorsMap.put("course", "");
-        errorsMap.put("teacher", "");
-        errorsMap.put("grade", "");
-        errorsMap.put("sources", "");
-        errorsMap.put("other_text", "");
-    }
 
-    public Map<String, String> getErrorsMap() {
-        return errorsMap;
+
+    public String getValidationError(String errorCode) {
+        String errorMessage = errorsMap.get(errorCode);
+        if (errorMessage == null) {
+            errorMessage = "";
+        }
+
+        return errorMessage;
     }
 
     private boolean isEmpty(String value) {
@@ -74,7 +69,6 @@ public class Validation {
     }
 
     public boolean isInvalidation(HttpServletRequest request) {
-        boolean result = false;
         Map<String, String[]> parameterMap = request.getParameterMap();
 
         for (String param : paramForValidation) {
@@ -82,13 +76,11 @@ public class Validation {
                 String paramValue = parameterMap.get(param)[0];
                 if (isEmpty(paramValue)) {
                     errorsMap.put(param, MESSAGE);
-                    result = true;
                     continue;
                 }
                 request.setAttribute(param, paramValue);
             } else {
                 errorsMap.put(param, MESSAGE);
-                result = true;
             }
         }
 
@@ -106,27 +98,24 @@ public class Validation {
                     request.setAttribute(AGE, ageValue);
                 } else {
                     errorsMap.put(AGE, MESSAGE);
-                    result = true;
                 }
             }
         }
 
-        if (parameterMap.containsKey(OTHER_COURSE)){
+        if (parameterMap.containsKey(OTHER_COURSE)) {
             request.setAttribute(OTHER_COURSE, parameterMap.get(OTHER_COURSE));
         }
 
-        if (parameterMap.containsKey(SOURCES)){
+        if (parameterMap.containsKey(SOURCES)) {
             request.setAttribute(SOURCES, parameterMap.get(SOURCES));
-        }else {
+        } else {
             errorsMap.put(SOURCES, MESSAGE);
-            result = true;
         }
 
         if (parameterMap.containsKey(OTHER_TEXT)) {
             String otherTextValue = parameterMap.get(OTHER_TEXT)[0];
             if (isEmpty(otherTextValue)) {
                 errorsMap.put(OTHER_TEXT, MESSAGE);
-                result = true;
             } else {
                 request.setAttribute(OTHER_TEXT, otherTextValue);
             }
@@ -139,6 +128,6 @@ public class Validation {
             }
         }
 
-        return result;
+        return !errorsMap.isEmpty();
     }
 }

@@ -20,16 +20,14 @@ public class ResultServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
 
-        Validation validation = (Validation) request.getAttribute("validation");
-        if (validation == null) {
-            validation = new Validation();
-            request.setAttribute("validation", validation);
-        }
+        Validation validation = new Validation();
+        request.setAttribute("validation", validation);
 
 
         if (validation.isInvalidation(request)) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
             dispatcher.forward(request, response);
+            return;
         }
 
 
@@ -56,7 +54,7 @@ public class ResultServlet extends HttpServlet {
                 }
                 continue;
             }
-            writer.println("<tr><td>" + attributeName + "</td><td>" + (String) request.getAttribute(attributeName) + "</td></tr>");
+            writer.println("<tr><td>" + attributeName + "</td><td>" + request.getAttribute(attributeName) + "</td></tr>");
         }
         writer.println("</tbody>");
         writer.println("</table>");

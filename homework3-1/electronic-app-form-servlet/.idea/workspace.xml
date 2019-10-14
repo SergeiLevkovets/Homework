@@ -6,7 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5917e316-3c17-4f65-abb7-8efcfbf6e4ed" name="Default Changelist" comment="" />
+    <list default="true" id="5917e316-3c17-4f65-abb7-8efcfbf6e4ed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../homework3-2/electronic-app-form-servlet/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../homework3-2/electronic-app-form-servlet/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../homework3-2/electronic-app-form-servlet/out/artifacts/electronic_app_form_servlet_war_exploded/scripts/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../homework3-2/electronic-app-form-servlet/out/artifacts/electronic_app_form_servlet_war_exploded/scripts/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../homework3-2/electronic-app-form-servlet/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../homework3-2/electronic-app-form-servlet/web/WEB-INF/web.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,6 +171,7 @@
       <workItem from="1570450522161" duration="433000" />
       <workItem from="1570451136329" duration="2825000" />
       <workItem from="1570536770285" duration="2533000" />
+      <workItem from="1570978386391" duration="898000" />
     </task>
     <task id="LOCAL-00001" summary="homework3-1">
       <created>1570453803074</created>

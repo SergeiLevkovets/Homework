@@ -23,59 +23,22 @@ public class ParameterAssigner {
 
     private Map<String, String> parameterMap = new LinkedHashMap<>();
 
-    {
-        parameterMap.put("last_name", "");
-        parameterMap.put("name", "");
-        parameterMap.put("middle_name", "");
-        parameterMap.put("password", "");
-        parameterMap.put("age", "");
-        parameterMap.put("sex_men", "");
-        parameterMap.put("sex_women", "");
-        parameterMap.put("course_java_se", "");
-        parameterMap.put("course_java_ee", "");
-        parameterMap.put("course_python", "");
-        parameterMap.put("course_html_css", "");
-        parameterMap.put("course_javascript", "");
-        parameterMap.put("course_php_sql", "");
-        parameterMap.put("course_tester", "");
-        parameterMap.put("teacher_ivanov", "");
-        parameterMap.put("teacher_petrov", "");
-        parameterMap.put("teacher_sidorov", "");
-        parameterMap.put("grade_one", "");
-        parameterMap.put("grade_two", "");
-        parameterMap.put("grade_three", "");
-        parameterMap.put("grade_four", "");
-        parameterMap.put("grade_five", "");
-        parameterMap.put("otherCourse_java_se", "");
-        parameterMap.put("otherCourse_java_ee", "");
-        parameterMap.put("otherCourse_python", "");
-        parameterMap.put("otherCourse_html_css", "");
-        parameterMap.put("otherCourse_javascript", "");
-        parameterMap.put("otherCourse_php_sql", "");
-        parameterMap.put("otherCourse_tester", "");
-        parameterMap.put("otherCourseDis_java_se", "");
-        parameterMap.put("otherCourseDis_java_ee", "");
-        parameterMap.put("otherCourseDis_python", "");
-        parameterMap.put("otherCourseDis_html_css", "");
-        parameterMap.put("otherCourseDis_javascript", "");
-        parameterMap.put("otherCourseDis_php_sql", "");
-        parameterMap.put("otherCourseDis_tester", "");
-        parameterMap.put("tv", "");
-        parameterMap.put("radio", "");
-        parameterMap.put("inet", "");
-        parameterMap.put("metro", "");
-        parameterMap.put("friends", "");
-        parameterMap.put("other", "");
-        parameterMap.put("other_text", "");
-        parameterMap.put("other_text_disabled", "disabled");
-        parameterMap.put("recommendations", "");
+    private String setValueForMap(String value) {
+        return "value=\"" + value + "\"";
     }
 
-    private String setValueForMap(String value) {
-        if (value == null) {
-            return "value=\"\"";
+    public String getParameterValue(String parameterName) {
+        String parameterValue = parameterMap.get(parameterName);
+        if (parameterValue == null) {
+
+            if (parameterName.equals("other_text_disabled")) {
+                return "disabled";
+            }
+
+            return "";
         }
-        return "value=\"" + value + "\"";
+
+        return parameterValue;
     }
 
     public void setParameterForParameterMap(HttpServletRequest request) {
@@ -83,29 +46,19 @@ public class ParameterAssigner {
         while (attributeNames.hasMoreElements()) {
             String parameterName = attributeNames.nextElement();
             switch (parameterName) {
-                case LAST_NAME: {
-                    String value = (String) request.getAttribute(LAST_NAME);
-                    parameterMap.put(LAST_NAME, setValueForMap(value));
-                    break;
-                }
-                case NAME: {
-                    String value = (String) request.getAttribute(NAME);
-                    parameterMap.put(NAME, setValueForMap(value));
-                    break;
-                }
-                case MIDDLE_NAME: {
-                    String value = (String) request.getAttribute(MIDDLE_NAME);
-                    parameterMap.put(MIDDLE_NAME, setValueForMap(value));
-                    break;
-                }
-                case PASSWORD: {
-                    String value = (String) request.getAttribute(PASSWORD);
-                    parameterMap.put(PASSWORD, setValueForMap(value));
-                    break;
-                }
+                case LAST_NAME:
+                case NAME:
+                case MIDDLE_NAME:
+                case PASSWORD:
                 case AGE: {
-                    String value = (String) request.getAttribute(AGE);
-                    parameterMap.put(AGE, setValueForMap(value));
+                    String value = (String) request.getAttribute(parameterName);
+                    parameterMap.put(parameterName, setValueForMap(value));
+                    break;
+                }
+                case OTHER_TEXT:
+                case RECOMMENDATIONS: {
+                    String value = (String) request.getAttribute(parameterName);
+                    parameterMap.put(parameterName, value);
                     break;
                 }
                 case SEX: {
@@ -146,22 +99,10 @@ public class ParameterAssigner {
                     }
                     break;
                 }
-                case OTHER_TEXT: {
-                    String value = (String) request.getAttribute(OTHER_TEXT);
-                    parameterMap.put(OTHER_TEXT, value);
-                    break;
-                }
-                case RECOMMENDATIONS: {
-                    String value = (String) request.getAttribute(RECOMMENDATIONS);
-                    parameterMap.put(RECOMMENDATIONS, value);
-                    break;
-                }
+
             }
 
         }
     }
 
-    public Map<String, String> getParameterMap() {
-        return parameterMap;
-    }
 }
