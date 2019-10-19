@@ -1,0 +1,6 @@
+/.idea/
+/homework1-1/1lesson/.idea/
+*.zip
+*.iml
+*/**/.idea/
+*/**/out/
