@@ -5,9 +5,9 @@ import java.util.Map;
 
 public interface Validation {
 
-    Map<String, String> getResultMap();
+    Map<String, String> getErrorsMap();
 
-    boolean isInvalidate();
+    boolean isValidate();
 
     void validate(Map<String, String[]> parameterMap);
 }

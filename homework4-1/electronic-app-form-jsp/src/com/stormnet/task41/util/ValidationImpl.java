@@ -7,31 +7,18 @@ public class ValidationImpl implements Validation {
 
     private static final String MESSAGE = "<strong style=\"color: red\">Введены неверные данные</strong>";
 
-    private Map<String, String> resultMap;
-    private boolean isInvalidate = false;
+    private Map<String, String> errorsMap;
     private boolean isContainsSex = false;
     private boolean isContainsSources = false;
 
     @Override
-    public Map<String, String> getResultMap() {
-        return resultMap;
+    public Map<String, String> getErrorsMap() {
+        return errorsMap;
     }
 
     @Override
-    public boolean isInvalidate() {
-        if (!isContainsSex) {
-            resultMap.put(setErrorsMes("sex"), MESSAGE);
-        }
-        if (!isContainsSources) {
-            resultMap.put(setErrorsMes("sources"), MESSAGE);
-        }
-
-        return isInvalidate;
-    }
-
-    private String setErrorsMes(String param) {
-        isInvalidate = true;
-        return param + "_err";
+    public boolean isValidate() {
+        return errorsMap.isEmpty();
     }
 
     private boolean isEmpty(String value) {
@@ -43,7 +30,7 @@ public class ValidationImpl implements Validation {
 
     @Override
     public void validate(Map<String, String[]> parameterMap) {
-        resultMap = new HashMap<>();
+        errorsMap = new HashMap<>();
         for (String parameterName : parameterMap.keySet()) {
             switch (parameterName) {
                 case "last_name":
@@ -55,7 +42,7 @@ public class ValidationImpl implements Validation {
                 case "other_text": {
                     String value = parameterMap.get(parameterName)[0];
                     if (isEmpty(value)) {
-                        resultMap.put(setErrorsMes(parameterName), MESSAGE);
+                        errorsMap.put(parameterName, MESSAGE);
                         break;
                     }
                 }
@@ -63,7 +50,7 @@ public class ValidationImpl implements Validation {
                     String value = parameterMap.get(parameterName)[0];
                     if (!isEmpty(value)) {
                         if (!value.matches("[-+]?\\d+")) {
-                            resultMap.put(setErrorsMes(parameterName), MESSAGE);
+                            errorsMap.put(parameterName, MESSAGE);
                         }
                     }
                     break;
@@ -76,6 +63,12 @@ public class ValidationImpl implements Validation {
                     break;
                 }
             }
+        }
+        if (!isContainsSex) {
+            errorsMap.put("sex", MESSAGE);
+        }
+        if (!isContainsSources) {
+            errorsMap.put("sources", MESSAGE);
         }
     }
 }
