@@ -1,0 +1,29 @@
+
+html, body {
+    width: 700px;
+    min-width: 560px;
+    margin: 5px auto;
+    height: auto;
+    min-height: 500px;
+}
+
+body {
+    background: #d8d8ff;
+    color: #292120;
+    border: 5px outset #819ea0;
+    position: relative;
+}
+
+.form_div, .result {
+    margin: 10px;
+    padding: 10px;
+}
+
+.gis {
+    text-align: center;
+    margin: 10px;
+    background: red;
+    border: 5px #14131e;
+    height: 20px;
+}
+

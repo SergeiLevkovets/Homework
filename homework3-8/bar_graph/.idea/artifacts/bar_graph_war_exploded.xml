@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="bar_graph:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/bar_graph_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="bar_graph/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bar_graph" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
