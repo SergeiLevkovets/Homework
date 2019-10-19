@@ -1,8 +1,8 @@
 package com.stormnet.task41.servlet;
 
 import com.stormnet.task41.util.Validation;
+import com.stormnet.task41.util.ValidationImpl;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +19,15 @@ public class ControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
 
-        Validation validation = new Validation();
-        validation.validation(request);
+        Validation validation = new ValidationImpl();
+
+        validation.validate(request.getParameterMap());
 
         if (validation.isInvalidate()) {
+        Map<String, String> resultMap = validation.getResultMap();
+        for (String paramName : resultMap.keySet()) {
+            request.setAttribute(paramName, resultMap.get(paramName));
+        }
             request.getRequestDispatcher("WEB-INF/pages/index.jsp").forward(request, response);
         }
 

@@ -10,8 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Electronic application form servlet</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="scripts/script.js" defer></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/script.js" defer></script>
 </head>
 <body>
 <h1>Электронная анкета<br>для оценки качества образования.</h1>
