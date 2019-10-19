@@ -9,8 +9,5 @@ public interface Validation {
 
     boolean isInvalidate();
 
-    //Для вывода результатов в result.jsp в заданном порядке
-    LinkedList<String> getParamForValidationFull();
-
     void validate(Map<String, String[]> parameterMap);
 }
