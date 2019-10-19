@@ -28,8 +28,8 @@
         5. Возраст: ${age}<br>
         <input type="text" name="age" id="age" value="${fn:escapeXml(param.age)}"/><br><br>
         6. Пол*: ${sex}<br>
-        <label><input type="radio" name="sex" id="sex_men" value="men" ${param.sex == 'sex_men' ? 'checked' : ''}/>Мужской</label>
-        <label><input type="radio" name="sex" id="sex_women" value="women" ${param.sex == 'sex_women' ? 'checked' : ''}/>Женский</label>
+        <label><input type="radio" name="sex" id="sex_men" value="men" ${param.sex == 'men' ? 'checked' : ''}/>Мужской</label>
+        <label><input type="radio" name="sex" id="sex_women" value="women" ${param.sex == 'women' ? 'checked' : ''}/>Женский</label>
         <br/><br>
     </div>
     <div class="courses size">
@@ -61,7 +61,7 @@
             <option value="five" ${param.grade == 'five' ? 'selected' : ''}>5</option>
         </select><br><br>
         10. Прочие курсы:<br>
-        <select name="other_course[]" id="other_course" multiple="multiple"
+        <select name="other_course" id="other_course" multiple="multiple"
                 title='Выбирете несколько вариантов
                        при помощи Ctrl'
         >

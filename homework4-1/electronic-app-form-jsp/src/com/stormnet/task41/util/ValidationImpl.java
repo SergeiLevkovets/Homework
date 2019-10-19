@@ -43,8 +43,8 @@ public class ValidationImpl implements Validation {
                     String value = parameterMap.get(parameterName)[0];
                     if (isEmpty(value)) {
                         errorsMap.put(parameterName, MESSAGE);
-                        break;
                     }
+                    break;
                 }
                 case "age": {
                     String value = parameterMap.get(parameterName)[0];
@@ -57,6 +57,7 @@ public class ValidationImpl implements Validation {
                 }
                 case "sex": {
                     isContainsSex = true;
+                    break;
                 }
                 case "sources": {
                     isContainsSources = true;

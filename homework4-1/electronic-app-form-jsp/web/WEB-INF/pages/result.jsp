@@ -1,4 +1,4 @@
-<%@ page import="java.util.LinkedList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -23,15 +23,12 @@
     <tr><td>7. Курс:</td><td>${param.course}</td></tr>
     <tr><td>8. Преподаватель:</td><td>${param.teacher}</td></tr>
     <tr><td>9. Оценка курса:</td><td>${param.grade}</td></tr>
-    <%
-        for (String value : request.getParameterValues("other_course[]")) {
-    %><tr><td><%="10. Прочие курсы:"%></td><td><%=value%></td></tr><%
-        }
-
-        for (String value : request.getParameterValues("sources")) {
-    %><tr><td><%="11. Как Вы о нас узнали*:"%></td><td><%=value%></td></tr><%
-        }
-    %>
+    <c:forEach var="value" items="${paramValues.other_course}">
+        <tr><td>10. Прочие курсы:</td><td>${value}</td></tr>
+    </c:forEach>
+    <c:forEach var="value" items="${paramValues.sources}">
+        <tr><td>11. Как Вы о нас узнали:</td><td>${value}</td></tr>
+    </c:forEach>
     <tr><td>12. Другое:</td><td>${param.other_text}</td></tr>
     <tr><td>13. Прочие Рекомендации:</td><td>${param.recommendations}</td></tr>
     </tbody>
