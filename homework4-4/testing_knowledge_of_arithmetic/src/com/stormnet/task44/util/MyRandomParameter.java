@@ -1,10 +1,9 @@
 package com.stormnet.task44.util;
 
-
-public class myRandomParameter {
+public class MyRandomParameter {
 
     public static int getNumberFromOneToFour() {
-        return (int) (Math.random() * 100 + 1);
+        return (int) (Math.random() * 3 + 1);
     }
 
     public static int getAnyLargeNumber() {
@@ -22,11 +21,15 @@ public class myRandomParameter {
     }
 
     public static String getMathOperationSymbol(String mathOperation) {
-        switch (mathOperation){
-            case "addition": return " + ";
-            case "subtraction": return " - ";
-            case "multiplication": return " * ";
-            case "division": return " / ";
+        switch (mathOperation) {
+            case "addition":
+                return " + ";
+            case "subtraction":
+                return " - ";
+            case "multiplication":
+                return " * ";
+            case "division":
+                return " / ";
         }
         return "exception";
     }

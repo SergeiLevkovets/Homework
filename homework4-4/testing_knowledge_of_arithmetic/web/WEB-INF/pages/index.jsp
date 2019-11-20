@@ -1,13 +1,65 @@
+<%@ page import="com.stormnet.task44.util.MyRandomParameter" %>
+<%@ page import="com.stormnet.task44.service.Service" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page isELIgnored="false" %>
+
+<%
+    Integer numberOfTask = (Integer) session.getAttribute("number_of_task");
+    if (numberOfTask == null) {
+        numberOfTask = 0;
+    }
+
+    Integer correctAnswer = (Integer) session.getAttribute("correct_answer");
+    if (correctAnswer == null) {
+        correctAnswer = 0;
+    }
+
+    Integer validAnswer = (Integer) session.getAttribute("valid_answer");
+    if (validAnswer != null) {
+        String testAnswer = request.getParameter("test_answer");
+        if ( testAnswer == null) {
+            session.setAttribute("message","<p>Вы пропустили вопрос</p>");
+        } else {
+            if (testAnswer.equals(validAnswer.toString())){
+                session.setAttribute("message",
+                        "<p class=\"text-success\">«Поздравляем! Это правильный ответ!»</p>");
+                correctAnswer++;
+            }else {
+                session.setAttribute("message",
+                        "<p class=\"text-danger\">«К сожалению, ответ не верный. Сосредоточьтесь!»</p>");
+            }
+        }
+        numberOfTask++;
+    }
+
+    String percentageOfCorAnswer = numberOfTask == 0 ? "0" : String.valueOf(Math.round(((double) correctAnswer / numberOfTask)*100));
+    session.setAttribute("percentage", percentageOfCorAnswer);
+    session.setAttribute("correct_answer", correctAnswer);
+    session.setAttribute("number_of_task", numberOfTask);
+
+    String mathOperation = MyRandomParameter.getRandomMathOperation();
+    session.setAttribute("math_operation", mathOperation);
+    String mathOperationSymbol = MyRandomParameter.getMathOperationSymbol(mathOperation);
+    session.setAttribute("math_operation_symbol", mathOperationSymbol);
+    int firstNumber = MyRandomParameter.getAnyLargeNumber();
+    session.setAttribute("first_number", firstNumber);
+    int secondNumber = MyRandomParameter.getAnyLargeNumber();
+    session.setAttribute("second_number", secondNumber);
+
+    int answer = Service.getMathAnswer(firstNumber, secondNumber, mathOperation);
+    session.setAttribute("valid_answer", answer);
+    int[] answerArr = Service.getResultArr(answer);
+    session.setAttribute("answers", answerArr);
+
+%>
 
 
 <%@include file="/WEB-INF/pages/header.jsp"%>
 <body>
 <div class="pricing-header px-1 text-center">
     <h2 class="display-6">Добрый день! Проверте свои знания арифметики</h2>
-    <p class="lead">Правильных ответов на данный момент: <span class="badge badge-info">X</span> из
-        <span class="badge badge-info">Y</span> <span class="badge badge-info">(Z%)</span></p>
+    <p class="lead">Правильных ответов на данный момент: <span class="badge badge-info">${correct_answer}</span> из
+        <span class="badge badge-info">${number_of_task}</span> <span class="badge badge-info">(${percentage}%)</span></p>
 </div>
 <div class="container">
     <div class="row border rounded mb-1 shadow-sm">
@@ -15,29 +67,29 @@
         <div class="col p-2 ">
             <div class="form-check-inline ">
                 <input class="form-check-input" type="radio" name="math_operation" id="addition"
-                       value="addition" disabled checked>
-                <label class="form-check-label text-primary" for="addition">
+                       value="addition" disabled ${math_operation == 'addition' ? 'checked' : ''}>
+                <label class="form-check-label ${math_operation == 'addition' ? 'text-primary' : ''}" for="addition">
                     Сложение
                 </label>
             </div>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="math_operation" id="subtraction"
-                       value="subtraction" disabled>
-                <label class="form-check-label" for="subtraction">
+                       value="subtraction" disabled ${math_operation == 'subtraction' ? 'checked' : ''}>
+                <label class="form-check-label ${math_operation == 'subtraction' ? 'text-primary' : ''}" for="subtraction">
                     Вычитание
                 </label>
             </div>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="math_operation" id="multiplication"
-                       value="multiplication" disabled>
-                <label class="form-check-label" for="multiplication">
+                       value="multiplication" disabled ${math_operation == 'multiplication' ? 'checked' : ''}>
+                <label class="form-check-label ${math_operation == 'multiplication' ? 'text-primary' : ''}" for="multiplication">
                     Умножение
                 </label>
             </div>
             <div class="form-check-inline">
                 <input class="form-check-input" type="radio" name="math_operation" id="division"
-                       value="division" disabled>
-                <label class="form-check-label" for="division">
+                       value="division" disabled ${math_operation == 'division' ? 'checked' : ''}>
+                <label class="form-check-label ${math_operation == 'division' ? 'text-primary' : ''}" for="division">
                     Остаток от деления
                 </label>
             </div>
@@ -48,33 +100,32 @@
             Сколько будет:
         </div>
         <div class="col-sm p-2">
-            пример 2 + 2
+            ${first_number} ${math_operation_symbol} ${second_number}
         </div>
     </div>
     <div class="row border rounded  mb-1 shadow-sm ">
         <div class="col-auto p-2">
-            <form role="form" class="form" id="form" method="get" action="/result.html">
+            <form role="form" class="form" id="form" method="get" action="/index.html">
                 <div class="btn-group">
                     <div class="btn-group-vertical">
-                        <label class="btn btn-secondary text-left">
-                            <input type="radio" name="answer" id="first" value="first"> 1
+                        <label class="btn btn-secondary text-left" onclick="setTimeout(function(){$('#form').submit()}, 1000)">
+                            <input type="radio" name="test_answer" id="first" value="${answers[0]}"> ${answers[0]}
                         </label>
-                        <label class="btn btn-secondary text-left">
-                            <input type="radio" name="answer" id="second" value="second"> 2
+                        <label class="btn btn-secondary text-left" onclick="setTimeout(function(){$('#form').submit()}, 1000)">
+                            <input type="radio" name="test_answer" id="second" value="${answers[1]}"> ${answers[1]}
                         </label>
-                        <label class="btn btn-secondary text-left">
-                            <input type="radio" name="answer" id="third" value="third"> 3
+                        <label class="btn btn-secondary text-left" onclick="setTimeout(function(){$('#form').submit()}, 1000)">
+                            <input type="radio" name="test_answer" id="third" value="${answers[2]}"> ${answers[2]}
                         </label>
-                        <label class="btn btn-secondary text-left">
-                            <input type="radio" name="answer" id="fourth" value="fourth"> 4
+                        <label class="btn btn-secondary text-left" onclick="setTimeout(function(){$('#form').submit()}, 1000)">
+                            <input type="radio" name="test_answer" id="fourth" value="${answers[3]}"> ${answers[3]}
                         </label>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col text-center p-4">
-            <p class="text-success">«Поздравляем! Это правильный ответ!»</p>
-            <p class="text-danger">«К сожалению, ответ не верный. Сосредоточьтесь!»</p>
+            ${message}
         </div>
     </div>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#skipButton">Следующее
@@ -120,7 +171,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary" onclick="document.getElementById('form').submit()">Ок</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/result.html'">Ок</button>
             </div>
         </div>
     </div>
